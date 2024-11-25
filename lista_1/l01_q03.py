@@ -26,8 +26,17 @@ else:
         winner_points = player_3_points
 
 
+if(name_player_1 == 'Rodri'):
+    winner = name_player_1
+    winner_points = player_1_points
+elif(name_player_2 == 'Rodri'):
+    winner = name_player_2
+    winner_points = player_2_points
+elif(name_player_3 == 'Rodri'):
+    winner = name_player_3
+    winner_points = player_3_points
+    
 print('O melhor jogador do mundo é {}, com {} ponto(s).'.format(winner, winner_points))
-
 if(winner == 'Vini Jr.'):
     print('Os brasileiros amaram o resultado! BAILA VINI!')
 elif(winner == 'Rodri'):
