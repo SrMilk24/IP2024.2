@@ -1,32 +1,26 @@
-def melhor_empresa(taxa_fixa_1, taxa_variavel_1, taxa_fixa_2, taxa_variavel_2):
-    # Verificando quando as empresas possuem a mesma taxa variável
-    if taxa_variavel_1 == taxa_variavel_2:
-        if taxa_fixa_1 < taxa_fixa_2:
-            return "A Empresa 1 é sempre a melhor opção!"
-        elif taxa_fixa_1 > taxa_fixa_2:
-            return "A Empresa 2 é sempre a melhor opção!"
-        else:
-            return "As duas empresas possuem o mesmo preço sempre!"
-    
-    # Calcular a distância crítica k onde os preços se igualam
-    k = (taxa_fixa_2 - taxa_fixa_1) / (taxa_variavel_1 - taxa_variavel_2)
-    
-    # Verificar se a distância crítica k é positiva
-    if k <= 0:
-        if taxa_variavel_1 < taxa_variavel_2:
-            return "A Empresa 1 é sempre a melhor opção!"
-        elif taxa_variavel_1 > taxa_variavel_2:
-            return "A Empresa 2 é sempre a melhor opção!"
-        else:
-            return "As duas empresas possuem o mesmo preço sempre!"
-    
-    # Se k é positiva, então temos a situação com distâncias críticas
-    return f"Empresa 1 é mais barata para distâncias menores que {k:.2f} km, ambas têm o mesmo preço para {k:.2f} km e a Empresa 2 é mais barata para distâncias maiores que {k:.2f} km."
+tf_1 = float(input())
+tv_1 = float(input())
+tf_2 = float(input())
+tv_2 = float(input())
 
-# Testando a função com alguns valores de entrada
-taxa_fixa_1 = 10
-taxa_variavel_1 = 5
-taxa_fixa_2 = 15
-taxa_variavel_2 = 3
+k = 1
 
-print(melhor_empresa(taxa_fixa_1, taxa_variavel_1, taxa_fixa_2, taxa_variavel_2))
+if(tv_1 != tv_2):
+    k = (tf_2 - tf_1) / (tv_1 - tv_2)
+
+if(tv_1 == tv_2):
+    if(tf_1 > tf_2):
+        print('A Empresa 1 é sempre a melhor opção!')
+    elif(tf_2 > tf_1):
+        print('A Empresa 2 é sempre a melhor opção!')
+    else:
+        print('As duas empresas possuem o mesmo preço sempre!')
+elif (k <= 0):
+    if(tv_1 < tv_2):
+        print('A Empresa 1 é sempre a melhor opção!')
+    elif(tv_1 > tv_2):
+        print('A Empresa 2 é sempre a melhor opção!')
+    else:
+        print('As duas empresas possuem o mesmo preço sempre!')
+else:
+    print('Empresa 1 é mais barata para distâncias menores que {:.2f} km, ambas têm o mesmo preço para {:.2f} km e a Empresa 2 é mais barata para distâncias maiores que {:.2f} km.'.format(k, k, k))
