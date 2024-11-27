@@ -8,13 +8,13 @@ orcamento_convertido = orcamento_total / valor_euro
 
 orc_convidados = orcamento_convertido / num_convidados
 if(orcamento_convertido < 1000000):
-    print('Acabei de receber a informação que o orçamento total da festa será {:.2f} de euros. Poxa, com um orçamento desses vai ser difícil fazer a festa bombar! Vou divulgar essa informação pros sites de fofocas pra flopar a festa.'.format(orc_convidados))
+    print('Acabei de receber a informação que o orçamento total da festa será {:.2f} de euros. Poxa, com um orçamento desses vai ser difícil fazer a festa bombar! Vou divulgar essa informação pros sites de fofocas pra flopar a festa.'.format(orcamento_convertido))
 else:
     print('Poxa, esse cara tá podendo! Vai ser um festão, mas eu vou encontrar alguma coisa para que flope.')
 
 if(orc_convidados >= 5000):
     print('Eita, cancela o repasse da informação pros sites de fofocas! Gastando isso tudo por pessoa, vai continuar sendo um luxo.')
-else:
+else:   
     print('Que vergonha, viu? O povo vai passar fome. Divulgue isso agora!')
 
 if(local_festa == 'Hotel Pera Palace' or local_festa == 'Hotel Copacabana Palace'):
