@@ -21,34 +21,34 @@ points_3 = ((gols_3 * 5) + (jogos_3 * 2) + (velocidade_3 * 3)) / 10 + (len(playe
 if(points_1 > points_2):
     if(points_1 > points_3):
         if(points_2 > points_3):
-            print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
-            print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
-            print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
+            print('1 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
+            print('2 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
+            print('3 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
             print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_1, points_1))
         else:
-            print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
-            print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
-            print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
+            print('1 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
+            print('2 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
+            print('3 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
             print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_1, points_1))
     else:
-        print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
-        print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
-        print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
+        print('1 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
+        print('2 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
+        print('3 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
         print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_3, points_3))
 else:
     if(points_2 > points_3):
         if(points_3 > points_1):
-            print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
-            print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
-            print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
+            print('1 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
+            print('2 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
+            print('3 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
             print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_2, points_2))
         else:
-            print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
-            print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
-            print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
+            print('1 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
+            print('2 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
+            print('3 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
             print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_2, points_2))
     else:
-        print('{} obteve {:.2f} pontos.'.format(player_3, points_3))
-        print('{} obteve {:.2f} pontos.'.format(player_2, points_2))
-        print('{} obteve {:.2f} pontos.'.format(player_1, points_1))
+        print('1 - {} obteve {:.2f} pontos.'.format(player_3, points_3))
+        print('2 - {} obteve {:.2f} pontos.'.format(player_2, points_2))
+        print('3 - {} obteve {:.2f} pontos.'.format(player_1, points_1))
         print('{} é o verdadeiro ganhador da Bola de Ouro com um total de {:.2f} pontos.'.format(player_3, points_3))
