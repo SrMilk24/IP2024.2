@@ -2,7 +2,9 @@ condicao = True
 contador = 0
 tempo_total = 0
 distancia_total = 0
+print('Boa noite, Papai Noel! Feliz Natal!')
 while(condicao):
+
     entrada = input()
     if(entrada == 'As renas ainda estão cheias de energia para entregar presentes para mais crianças!'):
         nome = input()
