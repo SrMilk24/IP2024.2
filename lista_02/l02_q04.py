@@ -7,19 +7,24 @@ folhas_necessarias = 0
 
 folhas_pessoa = quant_folhas / populacao
 
-if(folhas_pessoa < 6):
+if(altura < 2):
     print('Isso não é uma árvore, é um arbusto!')
 else:
-    #formula -> h = (-1 + raiz(1+8x))/2
+ 
     folhas_arvore = folhas_pessoa / 2
+    
     for x in range(1, altura+1):
-        folhas_necessarias += x
+        folhas_necessarias += x*2
+        
     if(folhas_necessarias > quant_folhas):
         print('Infelizmente não poderemos comemorar o Natal esse ano, não conseguimos fazer uma única árvore!')
     else:
-        print('{}*'.format(' '*(altura)))
-        for x in range(1, altura+1):
-            print('{}{}⠀{}'.format(' '*(altura-x),'+'*x, '+'*x))
+        print('{}'.format('⠀'*(altura+1)), end='')
+        print('*')
+        for x in range(altura):
+            print('{}'.format('⠀' * (altura - x)), end='')
+            print('{}'.format('+'*(x+1)), end='⠀')
+            print('{}'.format('+'* (x+1)))
             
     arvores_populacao = populacao * folhas_necessarias
 
