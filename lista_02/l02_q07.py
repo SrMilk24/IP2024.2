@@ -22,11 +22,11 @@ while(condição):
                 nota += nota_filme
             contador_br += 1
             print('{}º filme: {}'.format(contador_br, nome_filme))
-            print('Média de votos para {}: {:.1f}'.format(nome_filme, nota/membros))
+            print('Média de votos para \'{}\': {:.1f}'.format(nome_filme, nota/membros))
             nota = 0
-    elif('natal' in nome_filme.lower() or 'papai noel' in nome_filme.lower() or 'magia' in nome_filme.lower()):
-        if(nacionalidade.lower() != 'br' and nacionalidade.lower() != 'brasil'):
+        else:
             contador_ext += 1
+            
 
 print('{} Filmes BR X {} Filmes FORA'.format(contador_br, contador_ext))
 
