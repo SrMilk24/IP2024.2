@@ -26,11 +26,11 @@ else:
             print('{}'.format('+'*(x+1)), end='⠀')
             print('{}'.format('+'* (x+1)))
             
-    arvores_populacao = populacao * folhas_necessarias
+        arvores_populacao = populacao * folhas_necessarias
 
-    if(quant_folhas >= arvores_populacao):
-        print('O Grinch não conseguiu estragar o Natal dessa vez!')
-    else:
-        print('Essa árvore está muito grande, dessa forma não conseguiremos entregar para a cidade toda')
-    
+        if(quant_folhas >= arvores_populacao):
+            print('O Grinch não conseguiu estragar o Natal dessa vez!')
+        else:
+            print('Essa árvore está muito grande, dessa forma não conseguiremos entregar para a cidade toda')
+
 
