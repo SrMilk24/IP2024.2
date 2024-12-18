@@ -1,13 +1,24 @@
 tamanho = int(input())
 
-altura = (tamanho * 2) - 1
-print('{}{}{}'.format('⠀'*(altura//2), '*', '⠀'*(altura//2))) #Its Working
+for x in range(1, tamanho):
+    print('⠀' * (tamanho - x), end='')
+    print('*', end='')
+    if x > 1:
+        print('⠀' * (2 * x - 3), end='')
+        print('*', end='')
 
-for x in range(1, tamanho+1):
-    print('{}*{}*{}'.format('⠀'*(tamanho-x-1),'⠀'*(x), '⠀'*(tamanho-(x+1))))
+    print('⠀' * (tamanho - x))
+
 meio = '{}'.format('*⠀'*tamanho)
 meio = meio[:-1]
 print(meio)
 
-for x in range(tamanho-1, 0, -1):
-    print('{}{}{}'.format('⠀'*(tamanho-x),'*''⠀'*(x-1), '⠀'*((tamanho-(x+1)))))
+for i in range(tamanho - 1, 0, -1):
+    print('⠀' * (tamanho - i), end='')
+    print('*', end='')
+
+    if i > 1:
+        print('⠀' * (2 * i - 3), end='')
+        print('*', end='')
+    
+    print('⠀' * (tamanho - i))
