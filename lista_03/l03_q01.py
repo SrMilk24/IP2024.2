@@ -56,10 +56,11 @@ while(validador != "Já temos nossa lista de vilões"):
             else:
                 print(viloes[x])
     elif(entrada == "Já temos nossa lista de vilões"):
+        print("O resultado final ficou assim: ")
         for x in range(len(viloes)):
             if (x != len(viloes) - 1):
-                print(f"O resultado final ficou assim: {viloes[x]}", end=', ')
+                print(f"{viloes[x]}", end=', ')
             else:
-                print("O resultado final ficou assim:")
+                
                 print(viloes[x])
         validador = "Já temos nossa lista de vilões"
