@@ -6,9 +6,7 @@ while(validador != "Já temos nossa lista de vilões"):
     entrada = input()
 
     if(entrada == "Novo vilão - Muito Perigoso"):
-        vilao = input()
-        viloes.append(vilao)
-    elif(entrada == "Novo vilão - Meio perigoso"):
+        
         vilao = input()
         
         aux_lista = viloes #Crio uma lista auxiliar que é igual a lista de vilões
@@ -18,6 +16,10 @@ while(validador != "Já temos nossa lista de vilões"):
         #No for abaixo, apenas readiciono a lista os vilões da lista inicial
         for x in aux_lista:
             viloes.append(x)
+        
+    elif(entrada == "Novo vilão - Meio perigoso"):
+        vilao = input()
+        viloes.append(vilao)
     elif(entrada == "O que ele está fazendo aqui?"):
         vilao = input()
         aux_lista = []
@@ -38,9 +40,9 @@ while(validador != "Já temos nossa lista de vilões"):
         vilao_2 = input()
         for x in range(len(viloes)):
             if(viloes[x] == vilao_1):
-                viloes[x] == vilao_2
+                viloes[x] = vilao_2
             elif(viloes[x] == vilao_2):
-                viloes[x] == vilao_1
+                viloes[x] = vilao_1
     elif(entrada == "Essa posição não está de acordo, ele nem odeia carecas"):
         vilao = input()
         aux_lista = []
@@ -56,7 +58,7 @@ while(validador != "Já temos nossa lista de vilões"):
             else:
                 print(viloes[x])
     elif(entrada == "Já temos nossa lista de vilões"):
-        print("O resultado final ficou assim: ")
+        print("O resultado final ficou assim:")
         for x in range(len(viloes)):
             if (x != len(viloes) - 1):
                 print(f"{viloes[x]}", end=', ')
