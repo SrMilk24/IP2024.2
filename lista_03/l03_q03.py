@@ -38,26 +38,21 @@ for x in range(qnt_monitores):
         especialistas.append(nome)
 
 if(len(aprimoradores) > 0):
-    print(f"Temos um total de {len(aprimoradores)} aprimoradores entre os monitores! Eles são: ")
-    for x in aprimoradores:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(aprimoradores)
+    print(f"Temos um total de {len(aprimoradores)} aprimoradores entre os monitores! Eles são: {monitores}")
 if(len(emissores) > 0):
-    print(f"Temos um total de {len(emissores)} emissores entre os monitores! Eles são: ")
-    for x in emissores:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(emissores)
+    print(f"Temos um total de {len(emissores)} emissores entre os monitores! Eles são: {monitores}")
 if(len(transmutadores) > 0):
-    print(f"Temos um total de {len(transmutadores)} transmutadores entre os monitores! Eles são: ")
-    for x in transmutadores:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(transmutadores)
+    print(f"Temos um total de {len(transmutadores)} transmutadores entre os monitores! Eles são: {monitores}")
 if(len(manipuladores) > 0):
-    print(f"Temos um total de {len(manipuladores)} manipuladores entre os monitores! Eles são: ")
-    for x in manipuladores:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(manipuladores)
+    print(f"Temos um total de {len(manipuladores)} manipuladores entre os monitores! Eles são: {monitores}")
 if(len(conjuradores) > 0):
-    print(f"Temos um total de {len(conjuradores)} conjuradores entre os monitores! Eles são: ")
-    for x in conjuradores:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(conjuradores)
+    print(f"Temos um total de {len(conjuradores)} conjuradores entre os monitores! Eles são: {monitores}")
 if(len(especialistas) > 0):
-    print(f"Temos um total de {len(especialistas)} especialistas entre os monitores! Eles são: ")
-    for x in especialistas:
-        print(f"{x}", end=", ")
+    monitores = ', '.join(especialistas)
+    print(f"Temos um total de {len(especialistas)} especialistas entre os monitores! Eles são: {monitores}")
+
