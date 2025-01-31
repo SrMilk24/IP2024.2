@@ -1,5 +1,7 @@
 feiticeito = []
 mahoraga = []
+ataques_realizados = []
+ataque_anterior = ""
 turno = 0
 
 # Variaveis feiticeito
@@ -42,13 +44,15 @@ else:
     
 while feiticeito[1] > 0 or vida_maho[0] > 0:
     acao = input()
+    ataque_anterior = acao
     if turno % 2 == 0:
         if acao not in golpes_feiticeiro:
             if acao == "reversao de feitiço":
                 if feiticeito[4] == True:
                     feiticeito[1] += 25
                     print("Eu posso continuar lutando mais um pouco...")
-            print("Eu não sei que ideia é essa de tentar usar um golpe que eu não domino!")
+                else:
+                    print("Eu não sei que ideia é essa de tentar usar um golpe que eu não domino!")
         else:
             if acao == "expansão de domínio" and feiticeito[0] != "Satoru Gojo" and feiticeito[5] == True:
                 if(feiticeito[5] == True):
@@ -64,4 +68,22 @@ while feiticeito[1] > 0 or vida_maho[0] > 0:
                 mahoraga[0] -= dano
                 print("As faíscas negras ignoram qualquer tipo de defesa! Toma essa Mahoraga!")
             else:
-                print()
+                if acao not in ataques_realizados:
+                    ataques_realizados.append(acao)
+                    dano = (feiticeito[2] - mahoraga[2]) + 25
+                    mahoraga[0] -= int(dano)
+                    print(f"A roda do Mahoraga girou uma vez! {acao} só vai funcionar mais duas vezes")
+                else:
+                    contador = ataques_realizados.count(acao)
+                    if contador == 1:
+                        ataques_realizados.append(acao)
+                        dano = ((feiticeito[2] - mahoraga[2]) + 25) / 2
+                        mahoraga[0] -= int(dano)
+                        print(f"A roda do Mahoraga girou pela segunda vez! {acao} só vai funcionar mais uma vez")
+                    elif contador == 2:
+                        ataques_realizados.append(acao)
+                        dano = ((feiticeito[2] - mahoraga[2]) + 25) / 4
+                        mahoraga[0] -= int(dano)
+                        print(f"A roda do Mahoraga girou pela terceira vez! {acao} não vai funcionar mais")
+                    elif contador == 3:
+                        print("Esse ataque é inútil! Melhor tentar outra coisa.")
