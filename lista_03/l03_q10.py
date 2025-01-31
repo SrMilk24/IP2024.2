@@ -87,3 +87,26 @@ while feiticeito[1] > 0 or vida_maho[0] > 0:
                         print(f"A roda do Mahoraga girou pela terceira vez! {acao} não vai funcionar mais")
                     elif contador == 3:
                         print("Esse ataque é inútil! Melhor tentar outra coisa.")
+
+    else:
+        if acao in mov_mahoraga:
+            if acao == "regeneração":
+                if ataque_anterior == "black flash":
+                    print("Nem você vai conseguir se adaptar a isso, mahoraga!")
+                elif ataque_anterior == "reversão de feitiço":
+                    print()
+if mahoraga[0] <= 0:
+    print(f"{feiticeito[0]} conseguiu!")
+    if feiticeito[0] == "Megumi Fushiguro":
+        print("Depois de muito tempo, finalmente o Mahoraga foi exorcizado. Fushiguro é o primeiro usuário das dez sombras a conseguir esse feito!")
+    elif feiticeito[0] == "Sukuna":
+        print("Você me mostrou o caminho, Megumi Fushiguro, e por isso eu sou grato!")
+    elif feiticeito[0] == "Satoru Gojo":
+        print("Nem você sua adaptação é páreo para o infinito, queridinho.")
+    else:
+        print("Depois de muito tempo, finalmente o Mahoraga foi exorcizado, mas Fushiguro não participou da luta, logo o ritual foi anulado.")
+else:
+    if feiticeito[0] != "Satoru Gojo":
+        print(f"Parece que nem mesmo {feiticeito[0]} foi pareo contra o Mahoraga...")
+    else:
+        print("Magnífico, Satoru Gojo. Lembrarei de você enquanto eu durar nesta vida.")
