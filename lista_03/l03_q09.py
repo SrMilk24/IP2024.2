@@ -1,90 +1,94 @@
-qnt_ash, qnt_gary = input().split()
-ash_pkm = []
-gary_pkm = []
 batalhas = []
-ash_wins = 0
-gary_wins = 0
+pkm_ash = []
+pkm_gary = []
+gary = 0
+ash = 0
+
+qnt_pkm = list(map(int, input().split()))
+
+for x in range(2):
+    for z in range(qnt_pkm[x]):
+        pokemon = input().split(', ')
+        if x == 0:
+            pkm_ash.append(pokemon)
+        elif x == 1:
+            pkm_gary.append(pokemon)
+
 validador = ""
-
-if qnt_ash == 0 and qnt_gary == 0:
-    print("Nenhuma batalha foi concluída.")
-else:
-    if qnt_ash == 0:
-        print("Ash deixou seus pokemons descansando!")
-        print("Gary é o grande vencedor!")
-    elif qnt_gary == 0:
-        print("Gary deixou seus pokemons descansando!")
-        print("Ash é o grande vencedor!")
-    else:
-        for x in range(int(qnt_ash)):
-            dados = input()
-            pokemon = dados.strip().split(", ")
-            ash_pkm.append([pokemon[0], pokemon[1], int(pokemon[2]), int(pokemon[3])])
+print(f"QUE COMECEM AS BATALHAS")
+if qnt_pkm[0] > 0 and qnt_pkm[1] > 0:
+    while validador != "FIM DAS BATALHAS":
+        decisao = input() 
+        vencedor = ''
+        
+        if decisao != "FIM DAS BATALHAS":
+            numeros = input().split(' ')
+            numeros = list(map(int, numeros))
             
-        for x in range(int(qnt_gary)):
-            dados = input()
-            pokemon = dados.strip().split(", ")
-            gary_pkm.append([pokemon[0], pokemon[1], int(pokemon[2]), int(pokemon[3])])
-
-        print("QUE COMECEM AS BATALHAS")
-        while validador != "FIM DAS BATALHAS":
-            decisao = input()
-            if decisao == "FIM DAS BATALHAS" or decisao == "":
-                validador = "FIM DAS BATALHAS"
+            if decisao == 'par':
+                vencedor = 'ash' if sum(numeros) % 2 == 0 else 'gary'
             else:
-                num_ash, num_gary = input().split()
-                soma = int(num_ash) + int(num_gary)
-                nome_pkm_ash = input("").strip().split(' ')[0]
-                nome_pkm_gary = input("").strip().split(' ')[0]
-                for x in ash_pkm:
-                    if x[0] == nome_pkm_ash:
-                        pkm_ash = x
-                for x in gary_pkm:
-                    if x[0] == nome_pkm_gary:
-                        pkm_gary = x
-                
-                if (soma % 2 == 0 and decisao == "par") or (soma % 2 != 0 and decisao == "ímpar"):
-                    atk, defs = pkm_ash, pkm_gary
-                else:
-                    atk, defs = pkm_gary, pkm_ash
-                
-                batalha = f"{pkm_ash[0]} vs {pkm_gary[0]}"
-                batalhas.append(batalha)
+                vencedor = 'ash' if sum(numeros) % 2 != 0 else 'gary'
+            
+            a = input().split(' ')
+            escolha_pokemon_ash = a[0]
+            g = input().split(' ')
+            escolha_pokemon_gary = g[0]
+            
+            ash_escolha = ''
+            gary_escolha = ''
+            
+            for x in range(len(pkm_ash)):
+                if pkm_ash[x][0] == escolha_pokemon_ash:
+                    ash_escolha = int(x)
+                    
+            for y in range(len(pkm_gary)):
+                if pkm_gary[y][0] == escolha_pokemon_gary:
+                    gary_escolha = int(y)
+            
+            ash_hp = int(pkm_ash[x][2])
+            ash_atk = int(pkm_ash[x][3]) * 2
+            
+            gary_hp = int(pkm_gary[y][2])
+            gary_atk = int(pkm_gary[y][3]) * 2
+            
+            while ash_hp > 0 and gary_hp > 0:
+                if ash_hp > 0 and gary_hp > 0:
+                    if vencedor == 'ash':
+                        gary_hp -= ash_atk
+                        if gary_hp > 0:
+                            ash_hp -= gary_atk
+                    else:
+                        ash_hp -= gary_atk
+                        if ash_hp > 0:
+                            gary_hp -= ash_atk
+            
+            if ash_hp > 0:
+                print(f'{escolha_pokemon_gary} desmaiou e {escolha_pokemon_ash} venceu esta luta')
+                ash += 1
+                batalhas.append([escolha_pokemon_ash.upper(), escolha_pokemon_gary.lower()])
+            elif ash_hp < 0 and gary_hp > 0:
+                print(f'{escolha_pokemon_ash} desmaiou e {escolha_pokemon_gary} venceu esta luta')
+                gary += 1
+                batalhas.append([escolha_pokemon_ash.lower(), escolha_pokemon_gary.upper()])
+        else:
+            validador = "FIM DAS BATALHAS"
+print('=============== ===============')
+for n in range(len(batalhas)):
+    print(f'{n + 1}° Batalha: {batalhas[n][0]} vs {batalhas[n][1]}')
 
-                while atk[2] > 0 and defs[2] > 0:
-                    dano = atk[3]*2
-                    defs[2] -= dano
-                    if defs[2] <= 0:
-                        if defs[2] <= 0:
-                            if atk == pkm_gary:
-                                print(f"{pkm_ash[0]} desmaiou e {pkm_gary[0]} venceu esta luta")
-                                gary_wins += 1
-                            else:
-                                print(f"{pkm_gary[0]} desmaiou e {pkm_ash[0]} venceu esta luta")
-                                ash_wins += 1
-                    atk, defs = defs, atk
-                if pkm_ash[2] <= 0:
-                    ash_pkm.remove(pkm_ash)
-                    if not pkm_ash:
-                        validador = "FIM DAS BATALHAS"
-                        
-                if pkm_gary[2] <= 0:
-                    gary_pkm.remove(pkm_gary)
-                    if not pkm_gary:
-                        validador = "FIM DAS BATALHAS"
-
-                
-    print("=============== ===============")
-
-    for x, batalha in enumerate(batalhas):
-        winner, loser = batalha.split(" vs ")
-        winner = winner.upper()
-        loser = loser.lower()
-        print(f"{x+1}° Batalha: {winner} vs {loser}")
-
-    if ash_wins > gary_wins:
-        print("Ash é o grande vencedor!")
-    elif gary_wins > ash_wins:
-        print("Gary é o grande vencedor!")
-    else:
-        print("Depois de todas as batalhas, ainda terminou em empate!")
+if ash > gary:
+    print('Ash é o grande vencedor!')
+elif ash < gary:
+    print('Gary é o grande vencedor!')
+elif qnt_pkm[0] > 0 and qnt_pkm[1] > 0:
+    if ash == gary:
+        print('Depois de todas as batalhas, ainda terminou em empate!')
+elif qnt_pkm[0] == 0 and qnt_pkm[1] == 0:
+    print('Nenhuma batalha foi concluída.')
+elif qnt_pkm[0] == 0:
+    print(f'Ash deixou seus pokemons descansando!')
+    print('Gary é o grande vencedor!')
+elif qnt_pkm[1] == 0:
+    print(f'Gary deixou seus pokemons descansando!')
+    print('Ash é o grande vencedor!')
