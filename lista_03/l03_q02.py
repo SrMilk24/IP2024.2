@@ -26,7 +26,9 @@ while validador != "Acabou!":
 print("Fila do almoço:")
 for nome in nomes:
     count = nomes_trocados.count(nome)
-    if count > 1:
+    if count == 0:
+        print(f"{nome}: {count} teleportes!")
+    elif count > 1:
         print(f"{nome}: {count} teleportes!")
     elif count <= 1:
         print(f"{nome}: {count} teleporte!")
