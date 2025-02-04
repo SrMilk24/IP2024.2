@@ -20,7 +20,6 @@ while validador != "Acabou!":
 
             nomes[nome_1] = troca_separada[1]
             nomes[nome_2] = troca_separada[0]
-            print(nomes)
             for x in troca_separada:
                 nomes_trocados.append(x)
             
