@@ -38,12 +38,14 @@ if qnt_pkm[0] > 0 and qnt_pkm[1] > 0:
             ash_escolha = ''
             gary_escolha = ''
             
-            for x in range(len(pkm_ash)):
-                if pkm_ash[x][0] == escolha_pokemon_ash:
+            for x1 in range(len(pkm_ash)):
+                if pkm_ash[x1][0] == escolha_pokemon_ash:
+                    x = x1
                     ash_escolha = int(x)
                     
-            for y in range(len(pkm_gary)):
-                if pkm_gary[y][0] == escolha_pokemon_gary:
+            for y1 in range(len(pkm_gary)):
+                if pkm_gary[y1][0] == escolha_pokemon_gary:
+                    y = y1
                     gary_escolha = int(y)
             
             ash_hp = int(pkm_ash[x][2])
