@@ -1,9 +1,9 @@
-def registrar_conexoes(N):
+def registrar_conexoes(n):
     conexoes = []
-    for i in range(N):
+    for i in range(n):
         entrada = input().strip()
         partes = entrada.split(", ")
-        conexao = [None, None]  # Conexões para 0 e 1
+        conexao = [None, None]
         for parte in partes:
             bit, estado = parte.split(" - ")
             conexao[int(bit)] = estado
@@ -19,7 +19,7 @@ def processar_cadeia(cadeia, estado_inicial, conexoes, estado_aceitacao):
     caminho = [estado_inicial]
     estado_atual = estado_inicial
 
-    if cadeia == "ε" or cadeia == "":  # Verifica se a cadeia é ε ou vazia
+    if cadeia == "ε" or cadeia == "": 
         if estado_atual == estado_aceitacao:
             print("Caramba, essa cadeia é abençoada! Nem precisei trabalhar!")
         else:
@@ -48,38 +48,37 @@ def processar_cadeia(cadeia, estado_inicial, conexoes, estado_aceitacao):
 
 
 
-N = int(input())
-if N == 1:
+n = int(input())
+if n == 1:
     print("É… acho que não tem muito o que fazer com apenas uma dimensão, vou ter que me contentar com minha triste realidade :(")
-    
-
-estado_aceitacao = input().strip()
-conexoes = registrar_conexoes(N)
-imprimir_conexoes(conexoes)
-
-M = int(input())
-cadeias_aceitas = 0
-
-for _ in range(M):
-    cadeia = input().strip()
-    estado_inicial = input().strip()
-
-    caminho = processar_cadeia(cadeia, estado_inicial, conexoes, estado_aceitacao)
-    caminho_formatado = " -> ".join(caminho)
-    print(f"{{{caminho_formatado}}}")
-
-    if caminho[-1] == estado_aceitacao:
-        cadeias_aceitas += 1
-
-precisao = (cadeias_aceitas / M) * 100
-
-if precisao == 100:
-    print("Sensacional :)! Com certeza vamos voltar pra casa com esse autômato, até Alan Turing teria inveja!")
-elif precisao >= 75:
-    print("Show de bola! Se fizermos alguns ajustes nesse autômato, temos muitas chances de voltar pra casa!")
-elif precisao >= 50:
-    print("Até que esse autômato da pro gasto, mas vamos precisar de uns bons ajustes…")
-elif precisao >= 25:
-    print("Nossa, que situação horrível, não faço a mínima ideia de como concertar esse autômato")
 else:
-    print("Nossas expectativas já eram baixas, mas não sabia que seria tão catastrófico assim :/")
+    estado_aceitacao = input().strip()
+    conexoes = registrar_conexoes(n)
+    imprimir_conexoes(conexoes)
+
+    m = int(input()) 
+
+    cadeias_aceitas = 0
+
+    for _ in range(m):
+        cadeia = input().strip() 
+        estado_inicial = input().strip()
+        caminho = processar_cadeia(cadeia, estado_inicial, conexoes, estado_aceitacao)
+        caminho_formatado = " -> ".join(caminho)
+        print(f"{{{caminho_formatado}}}")
+
+        if caminho[-1] == estado_aceitacao:
+            cadeias_aceitas += 1
+
+    precisao = (cadeias_aceitas / m) * 100
+
+    if precisao == 100:
+        print("Sensacional :)! Com certeza vamos voltar pra casa com esse autômato, até Alan Turing teria inveja!")
+    elif precisao >= 75:
+        print("Show de bola! Se fizermos alguns ajustes nesse autômato, temos muitas chances de voltar pra casa!")
+    elif precisao >= 50:
+        print("Até que esse autômato da pro gasto, mas vamos precisar de uns bons ajustes…")
+    elif precisao >= 25:
+        print("Nossa, que situação horrível, não faço a mínima ideia de como concertar esse autômato")
+    else:
+        print("Nossas expectativas já eram baixas, mas não sabia que seria tão catastrófico assim :/")
