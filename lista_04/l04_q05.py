@@ -10,22 +10,21 @@ inimigo = [nome, vida, distancia, velocidade, defesa]
 def use_zap(inimigo):
     
     if inimigo[4] == 1:
-        if inimigo[3] > 1:
-            inimigo[3] -= 1
-            print("Ele está com defesa e está muito perto!")
-    elif inimigo[4] == 0:
+        print("Ele está com defesa e está muito perto!")
+    else:
         inimigo[1] -= 5
-        if inimigo[3] > 1:
-            inimigo[3] -= 1 
-            print("Você foi zapeado hahaha.")
-               
+        print("Você foi zapeado hahaha.")
+        
+    inimigo[3] = max(1, inimigo[3] - 1)
     return inimigo
+               
 
 def use_powpow(inimigo):
-    if inimigo[4] == 0:
+    if inimigo[4] == 1:
+        print("Ele está com defesa e está muito perto!")
+    else:
         inimigo[1] -= 15
         print("Jinx vai encher esse cara de buracos agora.")
-        
     return inimigo
 
 def use_fishbones(inimigo):
@@ -39,10 +38,11 @@ def use_fishbones(inimigo):
     return inimigo
 
 def use_ultimate(inimigo):
-    if inimigo[4] == 0:
+    if inimigo[4] == 1:
+        print("Ele está com defesa e está muito perto!")
+    else:
         inimigo[1] -= 100
         print("Ele vai ser transformado em cinzas pelo SUPER MÍSSIL!")
-        
     return inimigo
 
 def aproximar(inimigo):
@@ -66,10 +66,12 @@ while resultado_captura != "finalizada":
     if status_captura:
         print("Ah não, A Jinx foi PEGA!")
         resultado_captura = "finalizada"
+        break
     
     if inimigo[1] <= 0:
         print("Ninguem é capaz de derrotar a Jinx!!!")
         resultado_captura = "finalizada"
+        break
 
     #Movimentos possíveis da jinx
     if inimigo[4] == 1:
