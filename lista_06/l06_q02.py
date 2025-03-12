@@ -56,6 +56,7 @@ for x in range(3):
 obras_ordenadas = dict(sorted(obras.items(), key=lambda item: (-item[1]['pontuacao'], item[1]['orcamento'])))
 
 x = 1
+print("")
 for obra in obras_ordenadas:
     if x == 1:
         print(f"O primeiro estabelecimento construído deve ser {obra}, com um orçamento de {obras_ordenadas[obra]['orcamento']} e com a funcionalidade de {obras_ordenadas[obra]['objetivo']}.")
