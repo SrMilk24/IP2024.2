@@ -31,11 +31,24 @@ armas = {
     'Pederneira': 5000
 }
 
+def calcula_pontuacao(dict_armas, ouro, soldados, armas_estado):
+    dano_armas = 0
+    for arma in armas_estado:
+        dano_armas += dict_armas[arma]
+        
+    forca = ((ouro*2) + (soldados * 4) + (dano_armas * 4)) / 10
+
+    return forca
+
 def verifica_estado(lista_estados, estado):
     return estado in lista_estados
 
 def verificar_arma(armas, arma):
-    return arma in armas
+    if arma in armas:
+        return True
+    else:
+        print("@ selecione uma arma válida! @")
+        return False
 
 def estado_com_vantagem(estado):
     if estado == 'PE' or estado == 'PB' or estado == 'RN':
@@ -53,58 +66,47 @@ def subtrai_soldados(lista_estados, soldados):
 
 num_batalhas = 1
 
-while num_batalhas <= 3:
-    estado_atacante = input()
-    armas_atacante = []
-
-    quantia_ouro = int(input())
-    quantidade_soldados = int(input())
-
-    while len(armas_atacante) < 3:
+def add_armas(armas_possiveis):
+    armas_estado = []
+    while len(armas_estado) < 3:
         arma = input()
+        if verificar_arma(armas_possiveis, arma):
+            armas_estado.append(arma)
+    return armas_estado
 
-        if verificar_arma(armas, arma):
-            armas_atacante.append(arma)
-        else:
-            print("@ selecione uma arma válida! @")
+while num_batalhas < 4:
+    atacante = input()
 
-    # Verifico se estado atacante é da aliança ou da coroa, para subtrair o ouro e tropas enviado pra batalha
-    if verifica_estado(estados_alianca, estado_atacante):
-
-        subtrai_ouro(estados_alianca, quantia_ouro) # Subtraio o ouro da aliança
-        subtrai_soldados(estados_alianca, quantidade_soldados) # Subtraio os soldados da aliança
-
-        if estado_com_vantagem(estado_atacante):
-            print(f"o estado de {estado_atacante} ganhou 10% de força pois está lutando em um campo de batalha que lhe confere vantagem!")
-        # Nesse if acima, devo chamar a função que calcula o poder do atacante e por esse if dentro dela
-
-
-        # Aqui começo a tratar do defensor, se o atacante é da aliança, o defensor deve ser da coroa
-        estado_defensor = input()
-
-        if verifica_estado(estados_coroa, estado_defensor): #Verifico se o defensor é da coroa
-            armas_defensor = []
-
-            quantia_ouro = int(input())
-            quantidade_soldados = int(input())
-
-            while len(armas_defensor) < 3:
-                arma = input()
-
-                if verificar_arma(armas, arma):
-                    armas_defensor.append(arma)
-                else:
-                    print("@ selecione uma arma válida! @")
-            subtrai_ouro(estados_coroa, quantia_ouro)
-            subtrai_soldados(estados_coroa, quantidade_soldados)
-
-            # Aqui eu devo calculo o valor da força desse estado
-
-        else:
-            print("@ escolha um estado válido para contra-atacar! @")
-
-    elif verifica_estado(estados_coroa, estado_atacante):
-        subtrai_ouro(estados_coroa, quantia_ouro)
-        subtrai_soldados(estados_coroa, quantidade_soldados) 
-    else:
+    if (atacante not in estados_alianca) and (atacante not in estados_coroa):
         print("@ estado não encontrado ou não faz parte das regiões em guerra! @")
+    ouro_atacante = int(input())
+    soldados_atacante = int(input())
+    armas_atacante = add_armas(armas)
+    forca_atacante = calcula_pontuacao(armas, ouro_atacante, soldados_atacante, armas_atacante)
+ 
+    if estado_com_vantagem(atacante):
+        print(f"o estado de {atacante} ganhou 10% de força pois está lutando em um campo de batalha que lhe confere vantagem!")
+        forca_atacante *= 1.1
+    
+
+    defensor = input()
+    while ((atacante in estados_alianca) and (defensor not in estados_coroa)) or ((atacante in estados_coroa) and (defensor not in estados_alianca)):
+        print("@ escolha um estado válido para contra-atacar! @")
+        defensor = input()
+
+    ouro_defensor = int(input())
+    soldados_defensor = int(input())
+    armas_defendor = add_armas(armas)
+
+    forca_defensor = calcula_pontuacao(armas, ouro_defensor, soldados_defensor, armas_defendor)
+
+    if forca_atacante > forca_defensor:
+        print(f"o estado de {atacante} acaba de consagrar mais uma vitória e derrotou o estado de {defensor} e agora o anexará!")
+    else:
+        print(f"o estado de {defensor} acaba de consagrar mais uma vitória e derrotou o estado de {atacante} e agora o anexará!")
+
+
+    print(f"=== resultado da {num_batalhas}º batalha ===")
+
+
+    num_batalhas += 1
