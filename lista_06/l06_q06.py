@@ -83,6 +83,8 @@ while num_batalhas < 4:
     soldados_atacante = int(input())
     armas_atacante = add_armas(armas)
     forca_atacante = calcula_pontuacao(armas, ouro_atacante, soldados_atacante, armas_atacante)
+
+
  
     if estado_com_vantagem(atacante):
         print(f"o estado de {atacante} ganhou 10% de força pois está lutando em um campo de batalha que lhe confere vantagem!")
@@ -97,9 +99,22 @@ while num_batalhas < 4:
     ouro_defensor = int(input())
     soldados_defensor = int(input())
     armas_defendor = add_armas(armas)
-
     forca_defensor = calcula_pontuacao(armas, ouro_defensor, soldados_defensor, armas_defendor)
 
+    if atacante in estados_alianca and defensor in estados_coroa:
+        subtrai_ouro(alianca, ouro_atacante)
+        subtrai_soldados(alianca, soldados_atacante)
+
+        subtrai_ouro(coroa, ouro_defensor)
+        subtrai_soldados(coroa, soldados_defensor)
+    elif atacante in estados_coroa and defensor in estados_alianca:
+        subtrai_ouro(coroa, ouro_atacante)
+        subtrai_soldados(coroa, soldados_atacante)
+
+        subtrai_ouro(alianca, ouro_defensor)
+        subtrai_soldados(alianca, soldados_defensor)
+    
+    
     if forca_atacante > forca_defensor:
         print(f"o estado de {atacante} acaba de consagrar mais uma vitória e derrotou o estado de {defensor} e agora o anexará!")
     else:
