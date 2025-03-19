@@ -74,6 +74,11 @@ def add_armas(armas_possiveis):
             armas_estado.append(arma)
     return armas_estado
 
+def anexa_estado(lista_anexar, estado):
+    lista_anexar.append(estado)
+
+    return None
+
 while num_batalhas < 4:
     atacante = input()
 
@@ -101,13 +106,13 @@ while num_batalhas < 4:
     armas_defendor = add_armas(armas)
     forca_defensor = calcula_pontuacao(armas, ouro_defensor, soldados_defensor, armas_defendor)
 
-    if atacante in estados_alianca and defensor in estados_coroa:
+    if atacante in estados_alianca:
         subtrai_ouro(alianca, ouro_atacante)
         subtrai_soldados(alianca, soldados_atacante)
 
         subtrai_ouro(coroa, ouro_defensor)
         subtrai_soldados(coroa, soldados_defensor)
-    elif atacante in estados_coroa and defensor in estados_alianca:
+    else:
         subtrai_ouro(coroa, ouro_atacante)
         subtrai_soldados(coroa, soldados_atacante)
 
@@ -117,11 +122,47 @@ while num_batalhas < 4:
     
     if forca_atacante > forca_defensor:
         print(f"o estado de {atacante} acaba de consagrar mais uma vitória e derrotou o estado de {defensor} e agora o anexará!")
+
+        if atacante in estados_alianca:
+            anexa_estado(anexados_alianca, defensor)
+            alianca['quantidade_vitorias'] += 1
+            coroa['quantidade_derrotas'] += 1
+
+        else:
+            anexados_alianca(anexados_coroa, defensor)
+            coroa['quantidade_vitorias'] += 1
+            alianca['quantidade_derrotas'] += 1
+
+
     else:
         print(f"o estado de {defensor} acaba de consagrar mais uma vitória e derrotou o estado de {atacante} e agora o anexará!")
+        
+        if defensor in estados_alianca:
+            anexa_estado(anexados_alianca, atacante)
+            alianca['quantidade_vitorias'] += 1
+            coroa['quantidade_derrotas'] += 1
+        else:
+            anexa_estado(anexados_coroa, atacante)
+            coroa['quantidade_vitorias'] += 1
+            alianca['quantidade_derrotas'] += 1
 
 
     print(f"=== resultado da {num_batalhas}º batalha ===")
+    print()
 
+    print(f"número de estados da aliança: {len(alianca) - len(anexados_coroa)}")
+    print(f"vitorias: {alianca['quantidade_vitorias']}")
+    print(f"Derrotas: {alianca['quantidade_derrotas']}")
+    print(f"riqueza: {alianca['riqueza']}")
+    print(f"nº soldados: {alianca['quantidade_soldados']}")
+    print(f"pontos de vida: {alianca['pontos_vida']}")
+
+    print()
+    print(f"número de estados da coroa: {len(coroa) - len(anexados_alianca)}")
+    print(f"vitorias: {coroa['quantidade_vitorias']}")
+    print(f"Derrotas: {coroa['quantidade_derrotas']}")
+    print(f"riqueza: {coroa['riqueza']}")
+    print(f"nº soldados: {coroa['quantidade_soldados']}")
+    print(f"pontos de vida: {coroa['pontos_vida']}")
 
     num_batalhas += 1
